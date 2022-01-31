@@ -19,8 +19,21 @@ function ToDoList() {
         setToDos(oldTodos => oldTodos.filter(item => item.id !== itemID))
     }
 
+    function taskCompleted(ItemID) {
+        setToDos(oldTodos => oldTodos.map(item =>
+            {
+                if(item.id === ItemID) {
+                    item.isComplete = !item.isComplete
+                }
+                return item
+            }))
+    }
+
   return (
       <>
+        <div id = "heading">
+            <h1>What are your plans for today?</h1>
+        </div>
         <div id = "input-area">
             <form id = "form" onSubmit={CreateToDo}>
                 <input type = "text" id = "input-box" placeholder = "Add an item to do" value = {value} onChange = {event => setValue(event.target.value)}>
@@ -35,8 +48,9 @@ function ToDoList() {
             <ul>
                 {todos.map(item => 
                     <div id = "item-btns" key = {item.id}>
-                        <li>{item.todo}</li>
-                        <button id = "del-btn" onClick={() => deleteItem(item.id)}>Delete Item</button>
+                        <li className = {item.isComplete ? "strikethrough" : ""}>{item.todo}</li>
+                        <button onClick = {() => taskCompleted(item.id)}>✔</button>
+                        <button id = "del-btn" onClick={() => deleteItem(item.id)}>␡</button>
                     </div>)}
             </ul>
         </div>
