@@ -21,21 +21,25 @@ function ToDoList() {
 
   return (
       <>
-        <form onSubmit={CreateToDo}>
-            <input type = "text" value = {value} onChange = {event => setValue(event.target.value)}>
+        <div id = "input-area">
+            <form id = "form" onSubmit={CreateToDo}>
+                <input type = "text" id = "input-box" placeholder = "Add an item to do" value = {value} onChange = {event => setValue(event.target.value)}>
 
-            </input>
-            <button type = "submit">
-                Submit
-            </button>
-        </form>
-        <ul>
-            {todos.map(item => 
-                <div key = {item.id}>
-                    <li>{item.todo}</li>
-                    <button onClick={() => deleteItem(item.id)}>Done!</button>
-                </div>)}
-        </ul>
+                </input>
+                <button type = "submit" id = "submit-btn">
+                    +
+                </button>
+            </form>
+        </div>
+        <div id = "list">
+            <ul>
+                {todos.map(item => 
+                    <div id = "item-btns" key = {item.id}>
+                        <li>{item.todo}</li>
+                        <button id = "del-btn" onClick={() => deleteItem(item.id)}>Delete Item</button>
+                    </div>)}
+            </ul>
+        </div>
       </>
   )
 }
