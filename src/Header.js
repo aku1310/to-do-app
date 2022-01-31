@@ -4,7 +4,7 @@ function Header() {
   return (
       <div id = "header">
           <h1>
-              TO DO LIST
+              To Do App
           </h1>
       </div>
   )

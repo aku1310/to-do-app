@@ -32,7 +32,8 @@ function ToDoList() {
   return (
       <>
         <div id = "heading">
-            <h1>What are your plans for today?</h1>
+            <h1>Hope you have a great day!</h1>
+            <p>What are your plans?</p>
         </div>
         <div id = "input-area">
             <form id = "form" onSubmit={CreateToDo}>
@@ -49,8 +50,8 @@ function ToDoList() {
                 {todos.map(item => 
                     <div id = "item-btns" key = {item.id}>
                         <li className = {item.isComplete ? "strikethrough" : ""}>{item.todo}</li>
-                        <button onClick = {() => taskCompleted(item.id)}>✔</button>
-                        <button id = "del-btn" onClick={() => deleteItem(item.id)}>␡</button>
+                        <button  id = "check-btn" onClick = {() => taskCompleted(item.id)}>✔</button>
+                        <button id = "del-btn" onClick={() => deleteItem(item.id)}>DEL</button>
                     </div>)}
             </ul>
         </div>
